@@ -34,6 +34,7 @@ class Daoscus {
         nickname.target = "_blank";
         nickname.textContent = comment.userInfo.nickname;
         const replyContainer = document.createElement("div");
+        replyContainer.classList.add("daoscus-reply-container");
         tcommentContainer.appendChild(nickname);
         commentContainer.innerHTML += ` ${new Date(comment.createdAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" })}\n${escape(comment.comment)}`;
         container.appendChild(commentContainer);
@@ -58,7 +59,7 @@ class Daoscus {
         for (const comment of rows) {
             const commentContainer = this.initComment(comment, container);
             for (const reply of comment.replyList) {
-                this.initComment(reply, commentContainer);
+                this.initComment(reply, commentContainer.getElementsByClassName("daoscus-reply-container"));
             }
         }
     }
