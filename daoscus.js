@@ -36,7 +36,6 @@ class Daoscus {
         like.classList.add("daoscus-comment-like");
         like.textContent = `顶(${comment.likeCount})`;
         commentContainer.appendChild(like);
-        console.log(comment.comment, comment.replyTo);
         if (!comment.replyTo) {
             const showReply = document.createElement("button");
             showReply.classList.add("daoscus-comment-show-reply");
