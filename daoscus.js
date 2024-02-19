@@ -1,14 +1,4 @@
 "use strict";
-/**
- * @param {string} string 
- * @returns {string}
- */
-function escape(string) {
-    const element = document.createElement("div");
-    element.textContent = string;
-    return element.innerHTML;
-}
-
 class Daoscus {
     /**
      * @param {string} mapId
@@ -41,15 +31,15 @@ class Daoscus {
         createdAt.classList.add("daoscus-comment-createdAt");
         createdAt.textContent = " " + new Date(comment.createdAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" });
         commentContainer.appendChild(createdAt);
-        const content = document.createElement("div");
+        const content = document.createElement("p");
         content.classList.add("daoscus-comment-content");
-        content.textContent = escape(comment.comment);
+        content.textContent = comment.comment;
         commentContainer.appendChild(content);
         const like = document.createElement("button");
         like.classList.add("daoscus-comment-like");
         like.textContent = `顶(${comment.likeCount})`;
         commentContainer.appendChild(like);
-        console.log(comment.comment,comment.replyTo)
+        console.log(comment.comment, comment.replyTo);
         if (!comment.replyTo) {
             const showReply = document.createElement("button");
             showReply.classList.add("daoscus-comment-show-reply");
@@ -83,5 +73,4 @@ class Daoscus {
         }
     }
 }
-
 globalThis.Daoscus = Daoscus;
