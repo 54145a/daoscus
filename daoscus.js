@@ -55,8 +55,10 @@ class Daoscus {
         const rows = await this.getCommentRows();
         for (const comment of rows) {
             const commentContainer = this.initComment(comment, container);
-            for (const reply of comment.replyList) {
-                this.initComment(reply, commentContainer.getElementsByClassName("daoscus-comment-reply-container").item(0),true);
+            if (comment.replyCount > 0) {
+                for (const reply of comment.replyList) {
+                    this.initComment(reply, commentContainer.getElementsByClassName("daoscus-comment-reply-container").item(0), true);
+                }
             }
         }
     }
