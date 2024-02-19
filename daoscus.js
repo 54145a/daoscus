@@ -71,7 +71,7 @@ class Daoscus {
         commentNum.classList.add("daoscus-commentNum");
         commentNum.textContent = `${rows.length} 评论`;
         container.appendChild(commentNum);
-        container.appendChile(document.createElement("hr"));
+        container.appendChild(document.createElement("hr"));
         for (const comment of rows) {
             const commentContainer = this.initComment(comment, container);
         }
