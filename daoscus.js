@@ -1,4 +1,4 @@
-
+"use strict";
 /**
  * @param {string} string 
  * @returns {string}
@@ -23,9 +23,10 @@ class Daoscus {
     }
     /**
      * @param {object} comment 
-     * @param {HTMLDivElement} container 
+     * @param {HTMLDivElement} container
+     * @param {boolean} isReply  
      */
-    initComment(comment, container) {
+    initComment(comment, container, isReply = false) {
         const commentContainer = document.createElement("p");
         commentContainer.classList.add("daoscus-comment-container");
         const nickname = document.createElement("a");
@@ -33,22 +34,17 @@ class Daoscus {
         nickname.href = `//dao3.fun/profile/${comment.userInfo.userId}`;
         nickname.target = "_blank";
         nickname.textContent = comment.userInfo.nickname;
-        const replyContainer = document.createElement("div");
-        replyContainer.classList.add("daoscus-reply-container");
         commentContainer.appendChild(nickname);
         commentContainer.innerHTML += ` ${new Date(comment.createdAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" })}\n${escape(comment.comment)}`;
         container.appendChild(commentContainer);
         container.innerHTML += `\n${comment.replyCount}条回复\n`;
-        container.appendChild(replyContainer);
+        if (isReply) {
+            const replyContainer = document.createElement("div");
+            replyContainer.classList.add("daoscus-reply-container");
+            container.appendChild(replyContainer);
+        }
         container.appendChild(document.createElement("hr"));
         return commentContainer;
-    }
-    /**
-     * @param {object} reply
-     * @param {HTMLDivElement} container
-     */
-    initReply(reply, container) {
-        this.initComment(reply, container);
     }
     /**
      * @param {HTMLDivElement} container 
@@ -60,7 +56,7 @@ class Daoscus {
         for (const comment of rows) {
             const commentContainer = this.initComment(comment, container);
             for (const reply of comment.replyList) {
-                this.initComment(reply, commentContainer.getElementsByClassName("daoscus-reply-container")[0]);
+                this.initComment(reply, commentContainer.getElementsByClassName("daoscus-reply-container")[0],true);
             }
         }
     }
