@@ -25,9 +25,9 @@ class Daoscus {
         const time = document.createElement("p");
         time.classList.add("daoscus-comment-time");
         time.innerText = new Date(comment.createdAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" });
-        const content = document.createElement("pre");
+        const content = document.createElement("p");
         content.classList.add("daoscus-comment-content");
-        content.innerText = comment.comment;
+        content.innerText = encodeURIComponent(comment.comment);
         commentContainer.appendChild(nickname);
         commentContainer.appendChild(time);
         commentContainer.appendChild(document.createElement("br"));
