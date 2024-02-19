@@ -43,4 +43,4 @@ class Daoscus {
     }
 }
 
-globalThis.Daoscus = Daoscus;
+export {Daoscus};

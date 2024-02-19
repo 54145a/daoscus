@@ -10,7 +10,7 @@
     </style>
     <script src="//cdn.jsdelivr.net/npm/eruda"></script>
     <script>eruda.init();</script>
-    <script src="daoscus.js"></script>
+    <script type="module" src="daoscus.js"></script>
 </head>
 
 <body>
@@ -19,6 +19,7 @@
 
     </div>
     <script>
+        import { Daoscus } from "daoscus.js";
         globalThis.daoscus = new Daoscus("100105222");
         daoscus.init(document.getElementById("main"));
     </script>
