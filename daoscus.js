@@ -16,23 +16,17 @@ class Daoscus {
      */
     initComment(comment, container) {
         console.log(comment);
-        const commentContainer = document.createElement("div");
+        const commentContainer = document.createElement("p");
         commentContainer.classList.add("daoscus-comment-container");
         const nickname = document.createElement("a");
         nickname.classList.add("daoscus-comment-nickname");
         nickname.href = `//dao3.fun/profile/${comment.userInfo.userId}`;
         nickname.target = "_blank";
         nickname.innerText = comment.userInfo.nickname;
-        const time = document.createElement("div");
-        time.classList.add("daoscus-comment-time");
-        time.innerText = new Date(comment.createdAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" });
-        const content = document.createElement("div");
-        content.classList.add("daoscus-comment-content");
-        content.innerText = comment.comment;
         commentContainer.appendChild(nickname);
-        commentContainer.appendChild(time);
+        commentContainer.innerText += new Date(comment.createdAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" });
         commentContainer.appendChild(document.createElement("br"));
-        commentContainer.appendChild(content);
+        commentContainer.innerText += comment.comment;
         container.appendChild(commentContainer);
     }
     /**
