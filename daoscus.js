@@ -23,12 +23,12 @@ class Daoscus {
         nickname.href = `//dao3.fun/profile/${comment.userInfo.userId}`;
         nickname.target = "_blank";
         nickname.innerText = comment.userInfo.nickname;
-        const time = document.createElement("p");
+        const time = document.createElement("div");
         time.classList.add("daoscus-comment-time");
         time.innerText = new Date(comment.createdAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" });
-        const content = document.createElement("p");
+        const content = document.createElement("div");
         content.classList.add("daoscus-comment-content");
-        content.innerText = encodeURIComponent(comment.comment);
+        content.innerText = comment.comment;
         commentContainer.appendChild(nickname);
         commentContainer.appendChild(time);
         commentContainer.appendChild(document.createElement("br"));
