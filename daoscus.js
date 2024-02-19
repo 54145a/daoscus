@@ -15,7 +15,7 @@ class Daoscus {
      * @param {HTMLDivElement} container 
      */
     initComment(comment,container){
-        console.log(JSON.stringify(comment));
+        console.log(comment);
         const p = document.createElement("div");
         const a = document.createElement("a");
         a.href = `//dao3.fun/profile/${comment.userInfo.userId}`;
