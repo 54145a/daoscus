@@ -64,7 +64,7 @@ class Daoscus {
         const rows = await this.getCommentRows(contentType);
         const commentNum = document.createElement("p");
         commentNum.classList.add("daoscus-commentNum");
-        commentNum.textContent = `${rows.length} 评论`;
+        commentNum.textContent = `${rows.length} 评论 - Daoscus ${this.mapId}`;
         container.appendChild(commentNum);
         container.appendChild(document.createElement("hr"));
         for (const comment of rows) {
