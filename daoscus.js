@@ -23,7 +23,7 @@ class Daoscus {
         p.classList.add("daoscus-comment");
         const time = new Date(comment.createdAt);
         p.appendChild(a);
-        p.innerText = ` ${time.toLocaleString("zh-CN",{timeZone:"Asia/Shanghai"})}\n${comment.comment}`;
+        p.innerText += ` ${time.toLocaleString("zh-CN",{timeZone:"Asia/Shanghai"})}\n${comment.comment}`;
         container.appendChild(p);
     }
     /**
