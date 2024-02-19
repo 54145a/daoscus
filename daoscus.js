@@ -16,7 +16,7 @@ class Daoscus {
     /**
      * @param {number} offset
      */
-    async getDisplayCommentsRows(offset){
+    async getDisplayCommentRows(offset){
         const rows = await this.getCommentRows(offset);
         const content = rows.map((v) => ({
             isTop: v.isTop,
