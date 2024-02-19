@@ -1,6 +1,5 @@
-# Daoscus
+# Daos(san,3)cus
 目标:把Dao3评论区带出Dao3
-对标Giscus
 
 ## todo
 - [x] 展示评论
