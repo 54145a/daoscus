@@ -14,7 +14,7 @@ class Daoscus {
         const rows = await this.getCommentRows();
         const content = rows.map((v) => ({
             comment: v.comment,
-            nickname: v.nickname,
+            userInfo: v.userInfo,
             createdAt: v.createdAt
         }));
         return content;
@@ -25,9 +25,13 @@ class Daoscus {
      */
     initComment(comment,container){
         const p = document.createElement("div");
+        const a = document.createElement("a");
+        a.href = `//dao3.fun/profile/${comment.userInfo.userId}`;
+        a.innerText = comment.userInfo.nickname;
         p.classList.add("daoscus-comment");
         const time = new Date(comment.createdAt);
-        p.innerText = `${comment.nickname} ${time.toLocaleString("zh-CN",{timeZone:"Asia/Shanghai"})}\n${comment.comment}`;
+        p.appendChild(a);
+        p.innerText = ` ${time.toLocaleString("zh-CN",{timeZone:"Asia/Shanghai"})}\n${comment.comment}`;
         container.appendChild(p);
     }
     /**
@@ -42,5 +46,5 @@ class Daoscus {
         }
     }
 }
-
+y
 globalThis.Daoscus = Daoscus;
