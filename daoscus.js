@@ -40,7 +40,7 @@ class Daoscus {
         container.innerHTML += `\n${comment.replyCount}条回复\n`;
         if (!isReply) {
             const replyContainer = document.createElement("div");
-            replyContainer.classList.add("daoscus-reply-container");
+            replyContainer.classList.add("daoscus-comment-reply-container");
             container.appendChild(replyContainer);
         }
         container.appendChild(document.createElement("hr"));
@@ -57,7 +57,7 @@ class Daoscus {
         for (const comment of rows) {
             const commentContainer = this.initComment(comment, container);
             for (const reply of comment.replyList) {
-                this.initComment(reply, commentContainer.getElementsByClassName("daoscus-reply-container").item(0),true);
+                this.initComment(reply, commentContainer.getElementsByClassName("daoscus-comment-reply-container").item(0),true);
             }
         }
     }
