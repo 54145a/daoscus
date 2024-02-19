@@ -23,9 +23,9 @@ class Daoscus {
         nickname.target = "_blank";
         nickname.innerText = comment.userInfo.nickname;
         commentContainer.appendChild(nickname);
-        commentContainer.innerText += new Date(comment.createdAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" });
+        commentContainer.innerHTML += new Date(comment.createdAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" });
         commentContainer.appendChild(document.createElement("br"));
-        commentContainer.innerText += comment.comment;
+        commentContainer.innerHTML += comment.comment;
         container.appendChild(commentContainer);
     }
     /**
