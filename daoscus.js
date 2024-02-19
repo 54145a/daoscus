@@ -38,7 +38,7 @@ class Daoscus {
         commentContainer.innerHTML += ` ${new Date(comment.createdAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" })}\n${escape(comment.comment)}`;
         container.appendChild(commentContainer);
         container.innerHTML += `\n${comment.replyCount}条回复\n`;
-        if (isReply) {
+        if (!isReply) {
             const replyContainer = document.createElement("div");
             replyContainer.classList.add("daoscus-reply-container");
             container.appendChild(replyContainer);
@@ -57,7 +57,7 @@ class Daoscus {
         for (const comment of rows) {
             const commentContainer = this.initComment(comment, container);
             for (const reply of comment.replyList) {
-                this.initComment(reply, commentContainer.getElementsByClassName("daoscus-reply-container")[0],true);
+                this.initComment(reply, commentContainer.getElementsByClassName("daoscus-reply-container").item(0),true);
             }
         }
     }
