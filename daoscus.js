@@ -27,7 +27,7 @@ class Daoscus {
         nickname.target = "_blank";
         nickname.textContent = comment.userInfo.nickname;
         commentContainer.appendChild(nickname);
-        const createdAt = document.createElement("div");
+        const createdAt = document.createElement("i");
         createdAt.classList.add("daoscus-comment-createdAt");
         createdAt.textContent = " " + new Date(comment.createdAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" });
         commentContainer.appendChild(createdAt);
