@@ -37,14 +37,14 @@ class Daoscus {
         nickname.target = "_blank";
         nickname.textContent = comment.userInfo.nickname;
         commentContainer.appendChild(nickname);
-        const content = document.createElement("div");
-        content.classList.add("daoscus-comment-content");
-        content.textContent = escape(comment.comment);
-        commentContainer.appendChild(content);
         const createdAt = document.createElement("i");
         createdAt.classList.add("daoscus-comment-createdAt");
         createdAt.textContent = new Date(comment.createdAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" });
         commentContainer.appendChild(createdAt);
+        const content = document.createElement("div");
+        content.classList.add("daoscus-comment-content");
+        content.textContent = escape(comment.comment);
+        commentContainer.appendChild(content);
         const like = document.createElement("button");
         like.classList.add("daoscus-comment-like");
         like.textContent = `顶(${comment.likeCount})人已顶`;
@@ -65,7 +65,7 @@ class Daoscus {
      * @param {HTMLDivElement} container 
      * @param {number} contentType 
      */
-    async init(container,contentType) {
+    async init(container, contentType) {
         container.classList.add("daoscus-container");
         container.innerHTML = "";
         container.style.wordBreak = "break-all";
