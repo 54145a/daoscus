@@ -19,7 +19,7 @@ class Daoscus {
         const p = document.createElement("div");
         const a = document.createElement("a");
         a.href = `//dao3.fun/profile/${comment.userInfo.userId}`;
-        a.innerText = comment.userInfo.nickname;
+        a.innerText += comment.userInfo.nickname;
         p.classList.add("daoscus-comment");
         const time = new Date(comment.createdAt);
         p.appendChild(a);
