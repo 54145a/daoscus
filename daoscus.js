@@ -1,3 +1,14 @@
+
+/**
+ * @param {string} string 
+ * @returns {string}
+ */
+function escape(string){
+    const element = document.createElement("div");
+    element.textContent = string;
+    return element.innerHTML;
+}
+
 class Daoscus {
     /**
      * @param {string} mapId
@@ -22,8 +33,8 @@ class Daoscus {
         nickname.href = `//dao3.fun/profile/${comment.userInfo.userId}`;
         nickname.target = "_blank";
         nickname.innerText = comment.userInfo.nickname;
-        commentContainer.innerText += ` ${new Date(comment.createdAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" })}\n${comment.comment}`;
-        commentContainer.insertBefore(nickname, commentContainer.firstChild);
+        commentContainer.appendChild(nickname);
+        commentContainer.innerHTML += ` ${new Date(comment.createdAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" })}\n${escape(comment.comment)}`;
         container.appendChild(commentContainer);
     }
     /**
