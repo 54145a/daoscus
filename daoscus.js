@@ -16,8 +16,11 @@ class Daoscus {
     constructor(mapId) {
         this.mapId = mapId;
     }
-    async getCommentRows() {
-        const result = await fetch(`https://dao3.api.pgaot.com/comment/list?contentId=${this.mapId}&limit=100&offset=0`);
+    /**
+     * @param {number} contentType 
+     */
+    async getCommentRows(contentType) {
+        const result = await fetch(`https://dao3.api.pgaot.com/comment/list?contentId=${this.mapId}&limit=100&offset=0&contentType=${contentType}`);
         const json = await result.json();
         return json.data.rows;
     }
@@ -55,13 +58,14 @@ class Daoscus {
     }
     /**
      * @param {HTMLDivElement} container 
+     * @param {number} contentType 
      */
-    async init(container) {
+    async init(container,contentType) {
         container.classList.add("daoscus-container");
         container.innerHTML = "";
         container.style.wordBreak = "break-all";
         container.appendChild(document.createElement("hr"));
-        const rows = await this.getCommentRows();
+        const rows = await this.getCommentRows(contentType);
         for (const comment of rows) {
             const commentContainer = this.initComment(comment, container);
             if (comment.replyCount > 0) {
