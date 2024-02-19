@@ -52,6 +52,7 @@ class Daoscus {
     async init(container) {
         container.classList.add("daoscus-container");
         container.innerHTML = "";
+        container.appendChild(document.createElement("hr"));
         const rows = await this.getCommentRows();
         for (const comment of rows) {
             const commentContainer = this.initComment(comment, container);
