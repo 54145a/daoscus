@@ -10,15 +10,6 @@ class Daoscus {
         const json = await result.json();
         return json.data.rows;
     }
-    async getDisplayCommentRows(){
-        const rows = await this.getCommentRows();
-        const content = rows.map((v) => ({
-            comment: v.comment,
-            userInfo: v.userInfo,
-            createdAt: v.createdAt
-        }));
-        return content;
-    }
     /**
      * @param {object} comment 
      * @param {HTMLDivElement} container 
@@ -40,7 +31,7 @@ class Daoscus {
     async init(container){
         container.classList.add("daoscus-container");
         container.innerHTML = "";
-        const rows = await this.getDisplayCommentRows();
+        const rows = await this.getCommentRows();
         for(const comment of rows){
             this.initComment(comment,container);
         }
