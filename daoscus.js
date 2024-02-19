@@ -40,6 +40,7 @@ class Daoscus {
         container.appendChild(commentContainer);
         container.innerHTML += `\n${comment.replyCount}条回复\n`;
         container.appendChild(replyContainer);
+        container.appendChild(document.createElement("hr"));
         return commentContainer;
     }
     /**
