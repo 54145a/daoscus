@@ -23,10 +23,9 @@ class Daoscus {
     }
     /**
      * @param {object} comment 
-     * @param {HTMLDivElement} container
-     * @param {boolean} isReply  
+     * @param {HTMLDivElement} container 
      */
-    initComment(comment, container, isReply = false) {
+    initComment(comment, container) {
         const commentContainer = document.createElement("p");
         commentContainer.classList.add("daoscus-comment-container");
         const nickname = document.createElement("a");
@@ -43,7 +42,7 @@ class Daoscus {
         createdAt.classList.add("daoscus-comment-createdAt");
         createdAt.textContent = new Date(comment.createdAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" });
         commentContainer.appendChild(createdAt);
-        if (!isReply) {
+        if (comment.replyList) {
             const replyHeading = document.createElement("p");
             replyHeading.textContent = `${comment.replyCount} 条回复`;
             commentContainer.append(replyHeading);
@@ -66,7 +65,7 @@ class Daoscus {
             const commentContainer = this.initComment(comment, container);
             if (comment.replyCount > 0) {
                 for (const reply of comment.replyList) {
-                    this.initComment(reply, commentContainer.getElementsByClassName("daoscus-comment-reply-container").item(0), true);
+                    this.initComment(reply, commentContainer.getElementsByClassName("daoscus-comment-reply-container").item(0));
                 }
             }
             container.appendChild(document.createElement("hr"));
