@@ -59,7 +59,7 @@ class Daoscus {
         for (const comment of rows) {
             const commentContainer = this.initComment(comment, container);
             for (const reply of comment.replyList) {
-                this.initComment(reply, commentContainer.getElementsByClassName("daoscus-reply-container"));
+                this.initComment(reply, commentContainer.getElementsByClassName("daoscus-reply-container")[0]);
             }
         }
     }
