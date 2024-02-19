@@ -9,7 +9,7 @@ class Daoscus {
      * @param {number} offset
      */
     async getCommentRows(offset) {
-        const result = await fetch(`https://code-api-pc.dao3.fun/comment/list?contentId=${this.mapId}&limit=20&offset=${offset}`);
+        const result = await fetch(`https://dao3.api.pgaot.com/comment/list?contentId=${this.mapId}&limit=20&offset=${offset}`);
         const json = await result.json();
         return json.data.rows;
     }
