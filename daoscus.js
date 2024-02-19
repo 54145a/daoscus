@@ -15,7 +15,6 @@ class Daoscus {
      * @param {HTMLDivElement} container 
      */
     initComment(comment, container) {
-        console.log(comment);
         const commentContainer = document.createElement("p");
         commentContainer.classList.add("daoscus-comment-container");
         const nickname = document.createElement("a");
