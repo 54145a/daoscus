@@ -39,7 +39,7 @@ class Daoscus {
         commentContainer.appendChild(nickname);
         const createdAt = document.createElement("i");
         createdAt.classList.add("daoscus-comment-createdAt");
-        createdAt.textContent = new Date(comment.createdAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" });
+        createdAt.textContent = " "+new Date(comment.createdAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" });
         commentContainer.appendChild(createdAt);
         const content = document.createElement("div");
         content.classList.add("daoscus-comment-content");
@@ -47,12 +47,12 @@ class Daoscus {
         commentContainer.appendChild(content);
         const like = document.createElement("button");
         like.classList.add("daoscus-comment-like");
-        like.textContent = `顶(${comment.likeCount})人已顶`;
+        like.textContent = `顶(${comment.likeCount})`;
         commentContainer.appendChild(like);
         if (comment.replyList) {
             const showReply = document.createElement("button");
             showReply.classList.add("daoscus-comment-show-reply");
-            showReply.textContent = `查看${comment.replyCount}条回复`;
+            showReply.textContent = `查看回复(${comment.replyCount})`;
             commentContainer.append(showReply);
             const replyContainer = document.createElement("div");
             replyContainer.classList.add("daoscus-comment-reply-container");
