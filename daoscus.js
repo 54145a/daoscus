@@ -37,5 +37,5 @@ class Daoscus {
         }
     }
 }
-y
+
 globalThis.Daoscus = Daoscus;
