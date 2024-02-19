@@ -22,6 +22,7 @@ class Daoscus {
     async getCommentRows(contentType) {
         const result = await fetch(`https://dao3.api.pgaot.com/comment/list?contentId=${this.mapId}&limit=100&offset=0&contentType=${contentType}`);
         const json = await result.json();
+        console.log(json);
         return json.data.rows;
     }
     /**
@@ -41,7 +42,7 @@ class Daoscus {
         content.classList.add("daoscus-comment-content");
         content.textContent = escape(comment.comment);
         commentContainer.appendChild(content);
-        const createdAt = document.createElement("p");
+        const createdAt = document.createElement("div");
         createdAt.classList.add("daoscus-comment-createdAt");
         createdAt.textContent = new Date(comment.createdAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" });
         commentContainer.appendChild(createdAt);
