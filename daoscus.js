@@ -59,6 +59,7 @@ class Daoscus {
     async init(container) {
         container.classList.add("daoscus-container");
         container.innerHTML = "";
+        container.style.wordBreak = "break-all";
         container.appendChild(document.createElement("hr"));
         const rows = await this.getCommentRows();
         for (const comment of rows) {
