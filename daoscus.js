@@ -23,7 +23,7 @@ class Daoscus {
         nickname.target = "_blank";
         nickname.innerText = comment.userInfo.nickname;
         commentContainer.innerText += ` ${new Date(comment.createdAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" })}\n${comment.comment}`;
-        commentContainer.appendChild(nickname);
+        commentContainer.insertBefore(nickname, commentContainer.firstChild);
         container.appendChild(commentContainer);
     }
     /**
