@@ -42,7 +42,7 @@ class Daoscus {
         content.classList.add("daoscus-comment-content");
         content.textContent = escape(comment.comment);
         commentContainer.appendChild(content);
-        const createdAt = document.createElement("div");
+        const createdAt = document.createElement("i");
         createdAt.classList.add("daoscus-comment-createdAt");
         createdAt.textContent = new Date(comment.createdAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" });
         commentContainer.appendChild(createdAt);
@@ -67,14 +67,13 @@ class Daoscus {
         container.style.wordBreak = "break-all";
         container.appendChild(document.createElement("hr"));
         const rows = await this.getCommentRows(contentType);
+        const commentNum = document.createElement("p");
+        commentNum.classList.add("daoscus-commentNum");
+        commentNum.textContent = `${rows.length} 评论`;
+        container.appendChild(commentNum);
+        container.appendChile(document.createElement("hr"));
         for (const comment of rows) {
             const commentContainer = this.initComment(comment, container);
-            if (comment.replyCount > 0) {
-                for (const reply of comment.replyList) {
-                    this.initComment(reply, commentContainer.getElementsByClassName("daoscus-comment-reply-container").item(0));
-                }
-            }
-            container.appendChild(document.createElement("hr"));
         }
     }
 }
