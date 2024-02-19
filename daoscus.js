@@ -22,8 +22,8 @@ class Daoscus {
         nickname.href = `//dao3.fun/profile/${comment.userInfo.userId}`;
         nickname.target = "_blank";
         nickname.innerText = comment.userInfo.nickname;
-        commentContainer.appendChild(nickname);
         commentContainer.innerText += ` ${new Date(comment.createdAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" })}\n${comment.comment}`;
+        commentContainer.appendChild(nickname);
         container.appendChild(commentContainer);
     }
     /**
