@@ -35,14 +35,20 @@ class Daoscus {
         nickname.target = "_blank";
         nickname.textContent = comment.userInfo.nickname;
         commentContainer.appendChild(nickname);
-        commentContainer.innerHTML += ` ${new Date(comment.createdAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" })}\n${escape(comment.comment)}\n${comment.replyCount}条回复\n`;
+        const content = document.createElement("p");
+        content.classList.add("daoscus-comment-content");
+        content.textContent = escape(comment.comment);
+        commentContainer.appendChild(content);
+        const createdAt = document.createElement("p");
+        createdAt.classList.add("daoscus-comment-createdAt");
+        createdAt.textContent = new Date(comment.createdAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" });
+        commentContainer.appendChild(createdAt);
         if (!isReply) {
             const replyContainer = document.createElement("div");
             replyContainer.classList.add("daoscus-comment-reply-container");
             commentContainer.appendChild(replyContainer);
         }
         container.appendChild(commentContainer);
-        container.appendChild(document.createElement("hr"));
         return commentContainer;
     }
     /**
@@ -60,6 +66,7 @@ class Daoscus {
                     this.initComment(reply, commentContainer.getElementsByClassName("daoscus-comment-reply-container").item(0), true);
                 }
             }
+            container.appendChild(document.createElement("hr"));
         }
     }
 }
