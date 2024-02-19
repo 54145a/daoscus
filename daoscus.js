@@ -3,7 +3,7 @@
  * @param {string} string 
  * @returns {string}
  */
-function escape(string){
+function escape(string) {
     const element = document.createElement("div");
     element.textContent = string;
     return element.innerHTML;
@@ -32,10 +32,21 @@ class Daoscus {
         nickname.classList.add("daoscus-comment-nickname");
         nickname.href = `//dao3.fun/profile/${comment.userInfo.userId}`;
         nickname.target = "_blank";
-        nickname.innerText = comment.userInfo.nickname;
-        commentContainer.appendChild(nickname);
+        nickname.textContent = comment.userInfo.nickname;
+        const replyContainer = document.createElement("div");
+        tcommentContainer.appendChild(nickname);
         commentContainer.innerHTML += ` ${new Date(comment.createdAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" })}\n${escape(comment.comment)}`;
         container.appendChild(commentContainer);
+        container.innerHTML += `\n${comment.replyCount}条回复\n`;
+        container.appendChild(replyContainer);
+        return commentContainer;
+    }
+    /**
+     * @param {object} reply
+     * @param {HTMLDivElement} container
+     */
+    initReply(reply, container) {
+        this.initComment(reply, container);
     }
     /**
      * @param {HTMLDivElement} container 
@@ -45,7 +56,10 @@ class Daoscus {
         container.innerHTML = "";
         const rows = await this.getCommentRows();
         for (const comment of rows) {
-            this.initComment(comment, container);
+            const commentContainer = this.initComment(comment, container);
+            for (const reply of comment.replyList) {
+                this.initComment(reply, commentContainer);
+            }
         }
     }
 }
