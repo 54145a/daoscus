@@ -35,7 +35,7 @@ class Daoscus {
         nickname.target = "_blank";
         nickname.textContent = comment.userInfo.nickname;
         commentContainer.appendChild(nickname);
-        const content = document.createElement("p");
+        const content = document.createElement("div");
         content.classList.add("daoscus-comment-content");
         content.textContent = escape(comment.comment);
         commentContainer.appendChild(content);
@@ -44,6 +44,8 @@ class Daoscus {
         createdAt.textContent = new Date(comment.createdAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" });
         commentContainer.appendChild(createdAt);
         if (!isReply) {
+            const replyHeading = document.createElement("p");
+            replyHeading.textContent = `${comment.replyCount} 条回复`;
             const replyContainer = document.createElement("div");
             replyContainer.classList.add("daoscus-comment-reply-container");
             commentContainer.appendChild(replyContainer);
