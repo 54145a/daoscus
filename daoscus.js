@@ -21,6 +21,7 @@ class Daoscus {
         const nickname = document.createElement("a");
         nickname.classList.add("daoscus-comment-nickname");
         nickname.href = `//dao3.fun/profile/${comment.userInfo.userId}`;
+        nickname.target = "_blank";
         nickname.innerText = comment.userInfo.nickname;
         const time = document.createElement("p");
         time.classList.add("daoscus-comment-time");
