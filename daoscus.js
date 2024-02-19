@@ -1,4 +1,4 @@
-class Daocus {
+class Daoscus {
     /**
      * @param {string} mapId
      */
@@ -28,4 +28,4 @@ class Daocus {
     }
 }
 
-globalThis.Daocus = Daocus;
+globalThis.Daoscus = Daoscus;
