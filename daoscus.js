@@ -45,10 +45,14 @@ class Daoscus {
         createdAt.classList.add("daoscus-comment-createdAt");
         createdAt.textContent = new Date(comment.createdAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" });
         commentContainer.appendChild(createdAt);
+        const like = document.createElement("button");
+        like.classList.add("daoscus-comment-like");
+        like.textContent = `顶(${comment.likeCount})人已顶`;
         if (comment.replyList) {
-            const replyHeading = document.createElement("p");
-            replyHeading.textContent = `${comment.replyCount} 条回复`;
-            commentContainer.append(replyHeading);
+            const showReply = document.createElement("button");
+            showReply.classList.add("daoscus-comment-show-reply");
+            showReply.textContent = `查看${comment.replyCount}条回复`;
+            commentContainer.append(showReply);
             const replyContainer = document.createElement("div");
             replyContainer.classList.add("daoscus-comment-reply-container");
             commentContainer.appendChild(replyContainer);
@@ -73,6 +77,7 @@ class Daoscus {
         container.appendChild(document.createElement("hr"));
         for (const comment of rows) {
             const commentContainer = this.initComment(comment, container);
+            container.appendChild(document.createElement("hr"));
         }
     }
 }
