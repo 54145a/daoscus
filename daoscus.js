@@ -57,7 +57,7 @@ class Daoscus {
         if (!comment.replyTo) {
             const replyContainer = document.createElement("div");
             replyContainer.classList.add("daoscus-comment-reply-container");
-            replyContainer.style.marginLeft = "10px";
+            replyContainer.style.marginLeft = "10%";
             commentContainer.appendChild(replyContainer);
             /*const showReply = document.createElement("button");
             showReply.classList.add("daoscus-comment-show-reply");
