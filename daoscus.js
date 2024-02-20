@@ -10,7 +10,9 @@ class Daoscus {
      * @returns {object[]}
      */
     async getCommentRows() {
-        const result = await fetch(`https://dao3.api.pgaot.com/comment/list?contentId=${this.mapId}&limit=100&offset=0&contentType=1&orderBy=1`);
+        const result = await fetch(`https://code-api-pc.dao3.fun/comment/list?contentId=${this.mapId}&limit=100&offset=0&contentType=1&orderBy=1`, {
+            mode: "cors"
+        });
         const json = await result.json();
         const rows = json.data.rows;
         for (const comment of rows) {
@@ -25,7 +27,9 @@ class Daoscus {
      * @returns {object[]}
      */
     async getReplyRows(id) {
-        const result = await fetch(`https://code-api-pc.dao3.fun/comment/${id}/replies?limit=100&offset=0`);
+        const result = await fetch(`https://code-api-pc.dao3.fun/comment/${id}/replies?limit=100&offset=0`, {
+            mode: "cors"
+        });
         const json = await result.json();
         return json.data.rows;
     }
