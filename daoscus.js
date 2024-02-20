@@ -55,7 +55,7 @@ class Daoscus {
             const replyContainer = document.createElement("div");
             replyContainer.classList.add("daoscus-comment-reply-container");
             //replyContainer.style.width = "auto";
-            replyContainer.style.left = "10%";
+            replyContainer.offsetLeft = "10%";
             commentContainer.appendChild(replyContainer);
         }
         container.appendChild(commentContainer);
