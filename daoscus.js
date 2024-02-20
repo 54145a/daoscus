@@ -59,10 +59,10 @@ class Daoscus {
             replyContainer.classList.add("daoscus-comment-reply-container");
             replyContainer.style.marginLeft = "10px";
             commentContainer.appendChild(replyContainer);
-            const showReply = document.createElement("button");
+            /*const showReply = document.createElement("button");
             showReply.classList.add("daoscus-comment-show-reply");
             showReply.textContent = `展开${comment.replyCount}条回复`;
-            commentContainer.append(showReply);
+            commentContainer.append(showReply);*/
         }
         container.appendChild(commentContainer);
         return commentContainer;
@@ -86,7 +86,7 @@ class Daoscus {
             container.appendChild(document.createElement("hr"));
             const replyPreviewContainer = commentContainer.getElementsByClassName("daoscus-comment-reply-container").item(0);
             if (comment.replyCount > 0) {
-                for (const reply of comment.replyList) {
+                for (const reply of comment.replyRows) {
                     this.initComment(reply, replyPreviewContainer);
                 }
             }
