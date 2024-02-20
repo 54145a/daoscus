@@ -9,6 +9,18 @@ class Daoscus {
     async getCommentRows() {
         const result = await fetch(`https://dao3.api.pgaot.com/comment/list?contentId=${this.mapId}&limit=100&offset=0&contentType=1`);
         const json = await result.json();
+        const rows = json.data.rows;
+        for(const comment of rows){
+            comment.replyRows = await this.getReplyRows(comment.id);
+        }
+        return rows;
+    }
+    /**
+     * @param {number} id 
+     */
+    async getReplyRows(id) {
+        const result = await fetch(`https://code-api-pc.dao3.fun/comment/${id}/replies?limit=100&offset=0`);
+        const json = await result.json();
         return json.data.rows;
     }
     /**
@@ -24,10 +36,14 @@ class Daoscus {
         nickname.target = "_blank";
         nickname.textContent = comment.userInfo.nickname;
         commentContainer.appendChild(nickname);
-        const createdAt = document.createElement("i");
-        createdAt.classList.add("daoscus-comment-createdAt");
-        createdAt.textContent = " " + new Date(comment.createdAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" });
-        commentContainer.appendChild(createdAt);
+        /*if(comment.replyTo.nickname){
+            const replyTo = document.createElement();
+        }*/
+        //const createdAt = document.createElement("i");
+        //createdAt.classList.add("daoscus-comment-createdAt");
+        container.innerHTML += ` ${new Date(comment.createdAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" })}`;
+        //commentContainer.appendChild(createdAt);
+        commentContainer.appendChild(document.createElement("br"));
         const content = document.createElement("p");
         content.classList.add("daoscus-comment-content");
         content.textContent = comment.comment;
