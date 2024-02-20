@@ -7,7 +7,7 @@ class Daoscus {
         this.mapId = mapId;
     }
     async getCommentRows() {
-        const result = await fetch(`https://dao3.api.pgaot.com/comment/list?contentId=${this.mapId}&limit=100&offset=0&contentType=1`);
+        const result = await fetch(`https://dao3.api.pgaot.com/comment/list?contentId=${this.mapId}&limit=100&offset=0&contentType=1&orderBy=1`);
         const json = await result.json();
         const rows = json.data.rows;
         for (const comment of rows) {
