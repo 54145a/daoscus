@@ -46,7 +46,7 @@ class Daoscus {
         createdAt.classList.add("daoscus-comment-createdAt");
         createdAt.textContent = `${new Date(comment.createdAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" })}`;
         commentContainer.appendChild(createdAt);
-        if (!comment.replyTo || (comment.replyCount > 0 && comment.replyList)) {
+        if (!comment.replyTo && comment.replyCount > 0 && comment.replyList) {
             const replyHeading = document.createElement("p");
             replyHeading.classList.add("daoscus-comment-reply-heading");
             replyHeading.style.fontWeight = "bold";
@@ -54,7 +54,7 @@ class Daoscus {
             commentContainer.append(replyHeading);
             const replyContainer = document.createElement("div");
             replyContainer.classList.add("daoscus-comment-reply-container");
-            replyContainer.style.marginLeft = "10%";
+            replyContainer.style.marginLeft = "5%";
             commentContainer.appendChild(replyContainer);
         }
         container.appendChild(commentContainer);
