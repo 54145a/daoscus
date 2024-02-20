@@ -51,6 +51,7 @@ class Daoscus {
         createdAt.classList.add("daoscus-comment-createdAt");
         createdAt.textContent = `${new Date(comment.createdAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" })}`;
         commentContainer.appendChild(createdAt);
+        commentContainer.appendChild(document.createElement("br"));
         const like = document.createElement("button");
         like.classList.add("daoscus-comment-like");
         like.textContent = `顶(${comment.likeCount})`;
