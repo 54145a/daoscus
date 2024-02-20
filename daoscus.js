@@ -39,15 +39,15 @@ class Daoscus {
         /*if(comment.replyTo.nickname){
             const replyTo = document.createElement();
         }*/
-        //const createdAt = document.createElement("i");
-        //createdAt.classList.add("daoscus-comment-createdAt");
-        container.innerHTML += ` ${new Date(comment.createdAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" })}`;
-        //commentContainer.appendChild(createdAt);
         commentContainer.appendChild(document.createElement("br"));
         const content = document.createElement("p");
         content.classList.add("daoscus-comment-content");
         content.textContent = comment.comment;
         commentContainer.appendChild(content);
+                    const createdAt = document.createElement("i");
+                            createdAt.classList.add("daoscus-comment-createdAt");
+                                    container.innerHTML += ` ${new Date(comment.createdAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" })}`;
+                                            commentContainer.appendChild(createdAt);
         const like = document.createElement("button");
         like.classList.add("daoscus-comment-like");
         like.textContent = `顶(${comment.likeCount})`;
