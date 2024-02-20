@@ -41,12 +41,10 @@ class Daoscus {
         /*if(comment.replyTo.nickname){
             const replyTo = document.createElement();
         }*/
-        commentContainer.appendChild(document.createElement("br"));
         const content = document.createElement("p");
         content.classList.add("daoscus-comment-content");
         content.textContent = comment.comment;
         commentContainer.appendChild(content);
-        commentContainer.appendChild(document.createElement("br"));
         const createdAt = document.createElement("i");
         createdAt.classList.add("daoscus-comment-createdAt");
         createdAt.textContent = `${new Date(comment.createdAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" })}`;
