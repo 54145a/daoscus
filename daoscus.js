@@ -30,6 +30,7 @@ class Daoscus {
      * @param {HTMLDivElement} container 
      */
     initComment(comment, container) {
+        container.appendChild(document.createElement("hr"));
         const commentContainer = document.createElement("p");
         commentContainer.classList.add("daoscus-comment-container");
         const nickname = document.createElement("a");
@@ -77,7 +78,6 @@ class Daoscus {
         container.appendChild(document.createElement("hr"));
         for (const comment of rows) {
             const commentContainer = this.initComment(comment, container);
-            container.appendChild(document.createElement("hr"));
             const replyPreviewContainer = commentContainer.getElementsByClassName("daoscus-comment-reply-container").item(0);
             if (comment.replyCount > 0) {
                 for (const reply of comment.replyRows) {
