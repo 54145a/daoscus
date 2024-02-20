@@ -121,6 +121,7 @@ class Daoscus {
                 }
             }
         }
+        container.appendChild(document.createElement("hr"));
     }
 }
 globalThis.Daoscus = Daoscus;
