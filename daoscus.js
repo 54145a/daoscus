@@ -51,12 +51,11 @@ class Daoscus {
             container.appendChild(document.createElement("hr"));
             const replyHeading = document.createElement("p");
             replyHeading.classList.add("daoscus-comment-reply-heading");
+            replyHeading.style.fontWeight = "bold";
             replyHeading.textContent = `${comment.replyCount}回复`;
             commentContainer.append(replyHeading);
             const replyContainer = document.createElement("div");
             replyContainer.classList.add("daoscus-comment-reply-container");
-            replyContainer.style.margin = 5;
-            replyContainer.style.border = "solid black";
             commentContainer.appendChild(replyContainer);
         }
         container.appendChild(commentContainer);
