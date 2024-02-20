@@ -54,7 +54,7 @@ class Daoscus {
             commentContainer.append(replyHeading);
             const replyContainer = document.createElement("div");
             replyContainer.classList.add("daoscus-comment-reply-container");
-            replyContainer.style.paddingLeft = "10%";
+            replyContainer.style.marginLeft = "10%";
             commentContainer.appendChild(replyContainer);
         }
         container.appendChild(commentContainer);
