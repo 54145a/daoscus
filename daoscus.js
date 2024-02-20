@@ -47,13 +47,14 @@ class Daoscus {
         createdAt.textContent = `${new Date(comment.createdAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" })}`;
         commentContainer.appendChild(createdAt);
         commentContainer.appendChild(document.createElement("br"));
-        if (!comment.replyTo||(comment.replyCount > 0&&!comment.replyList)) {
+        if (!comment.replyTo&&comment.replyCount > 0) {
             const replyHeading = document.createElement("p");
             replyHeading.classList.add("daoscus-comment-reply-heading");
             replyHeading.textContent = `${comment.replyCount}回复`;
             commentContainer.append(replyHeading);
             const replyContainer = document.createElement("div");
             replyContainer.classList.add("daoscus-comment-reply-container");
+            replyContainer.style.border = "solid black";
             commentContainer.appendChild(replyContainer);
         }
         container.appendChild(commentContainer);
