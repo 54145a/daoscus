@@ -85,8 +85,10 @@ class Daoscus {
             const commentContainer = this.initComment(comment, container);
             container.appendChild(document.createElement("hr"));
             const replyPreviewContainer = commentContainer.getElementsByClassName("daoscus-comment-reply-container").item(0);
-            for (const reply of comment.replyList) {
-                this.initComment(reply, replyPreviewContainer);
+            if (comment.replyCount > 0) {
+                for (const reply of comment.replyList) {
+                    this.initComment(reply, replyPreviewContainer);
+                }
             }
         }
     }
