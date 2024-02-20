@@ -38,6 +38,12 @@ class Daoscus {
         nickname.target = "_blank";
         nickname.textContent = comment.userInfo.nickname;
         commentContainer.appendChild(nickname);
+        if (comment.replyTo?.nickname) {
+            const replyTo = document.createElement("i");
+            replyTo.classList.add("daoscus-comment-replyTo");
+            replyTo.textContent = ` 回复 ${comment.replyTo.nickname}`;
+            commentContainer.appendChild(replyTo);
+        }
         const content = document.createElement("p");
         content.classList.add("daoscus-comment-content");
         content.textContent = comment.comment;
