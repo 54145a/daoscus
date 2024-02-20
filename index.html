@@ -4,24 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Daoscus</title>
     <style>
 
     </style>
     <script src="//cdn.jsdelivr.net/npm/eruda"></script>
-    <script>eruda.init();</script>
+    <script>if (new URLSearchParams(location.search).get("eruda")) eruda.init();</script>
     <script src="daoscus.js"></script>
 </head>
 
 <body>
-    <h1>Daoscus测试页</h1>
-    Daoscus仍在开发中
     <div id="main">
-
+        如果daoscus没有加载，请检查mapId参数是否正确。
     </div>
     <script>
-        globalThis.daoscus = new Daoscus("100108128");
-        daoscus.init(document.getElementById("main"),1);
+        const mapId = new URLSearchParams(location.search).get("mapId");
+        if (mapId) {
+            globalThis.daoscus = new Daoscus(mapId);
+            daoscus.init(document.getElementById("main"), 1);
+        }
     </script>
 </body>
 
