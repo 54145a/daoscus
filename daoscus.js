@@ -38,9 +38,6 @@ class Daoscus {
         nickname.target = "_blank";
         nickname.textContent = comment.userInfo.nickname;
         commentContainer.appendChild(nickname);
-        /*if(comment.replyTo.nickname){
-            const replyTo = document.createElement();
-        }*/
         const content = document.createElement("p");
         content.classList.add("daoscus-comment-content");
         content.textContent = comment.comment;
@@ -50,19 +47,14 @@ class Daoscus {
         createdAt.textContent = `${new Date(comment.createdAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" })}`;
         commentContainer.appendChild(createdAt);
         commentContainer.appendChild(document.createElement("br"));
-        /*const like = document.createElement("button");
-        like.classList.add("daoscus-comment-like");
-        like.textContent = `顶(${comment.likeCount})`;
-        commentContainer.appendChild(like);*/
         if (!comment.replyTo) {
+            const replyHeading = document.createElement("p");
+            replyHeading.classList.add("daoscus-comment-reply-heading");
+            replyContainer.textContent = `${comment.replyCount}回复`;
+            commentContainer.append(replyHeading);
             const replyContainer = document.createElement("div");
             replyContainer.classList.add("daoscus-comment-reply-container");
-            replyContainer.style.marginLeft = "10%";
             commentContainer.appendChild(replyContainer);
-            /*const showReply = document.createElement("button");
-            showReply.classList.add("daoscus-comment-show-reply");
-            showReply.textContent = `展开${comment.replyCount}条回复`;
-            commentContainer.append(showReply);*/
         }
         container.appendChild(commentContainer);
         return commentContainer;
