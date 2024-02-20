@@ -47,7 +47,6 @@ class Daoscus {
         createdAt.textContent = `${new Date(comment.createdAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" })}`;
         commentContainer.appendChild(createdAt);
         if (!comment.replyTo&&comment.replyCount > 0) {
-            container.appendChild(document.createElement("hr"));
             const replyHeading = document.createElement("p");
             replyHeading.classList.add("daoscus-comment-reply-heading");
             replyHeading.style.fontWeight = "bold";
