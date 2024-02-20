@@ -34,6 +34,25 @@ class Daoscus {
         return json.data.rows;
     }
     /**
+     * @param {string} authorization 
+     * @param {string} content 
+     */
+    async postComment(authorization, content) {
+        const result = await fetch("https://code-api-pc.dao3.fun", {
+            method: "POST",
+            headers: {
+                "Cache-Control": "no-cache,no-store,must-revalidate",
+                "Authorization": authorization
+            },
+            body: {
+                comment: content,
+                "contentId": this.mapId,
+                contentType: 1
+            }
+
+        });
+    }
+    /**
      * @param {object} comment 
      * @param {HTMLDivElement} container 
      * @returns {HTMLDivElement}
