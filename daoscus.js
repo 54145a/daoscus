@@ -50,7 +50,7 @@ class Daoscus {
         if (!comment.replyTo) {
             const replyHeading = document.createElement("p");
             replyHeading.classList.add("daoscus-comment-reply-heading");
-            replyContainer.textContent = `${comment.replyCount}回复`;
+            replyHeading.textContent = `${comment.replyCount}回复`;
             commentContainer.append(replyHeading);
             const replyContainer = document.createElement("div");
             replyContainer.classList.add("daoscus-comment-reply-container");
