@@ -35,14 +35,19 @@ class Daoscus {
     }
     /**
      * @param {string} authorization
+     * @param {string} nonce 
+     * @param {string} hash 
      * @param {string} content 
      */
-    async postComment(authorization, content) {
+    async postComment(authorization, nonce, hash, content) {
         const result = await fetch("//dao3.api.pgaot.com/comment", {
             method: "POST",
             headers: {
                 "Cache-Control": "no-cache,no-store,must-revalidate",
-                "Authorization": authorization
+                Authorization: authorization,
+                nonce: nonce,
+                hash: hash,
+                timestamp: Date.now()
             },
             body: {
                 comment: content,
