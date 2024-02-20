@@ -10,7 +10,7 @@ class Daoscus {
         const result = await fetch(`https://dao3.api.pgaot.com/comment/list?contentId=${this.mapId}&limit=100&offset=0&contentType=1`);
         const json = await result.json();
         const rows = json.data.rows;
-        for(const comment of rows){
+        for (const comment of rows) {
             comment.replyRows = await this.getReplyRows(comment.id);
         }
         return rows;
@@ -44,10 +44,11 @@ class Daoscus {
         content.classList.add("daoscus-comment-content");
         content.textContent = comment.comment;
         commentContainer.appendChild(content);
-                    const createdAt = document.createElement("i");
-                            createdAt.classList.add("daoscus-comment-createdAt");
-                                    container.innerHTML += ` ${new Date(comment.createdAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" })}`;
-                                            commentContainer.appendChild(createdAt);
+        commentContainer.appendChild(document.createElement("br"));
+        const createdAt = document.createElement("i");
+        createdAt.classList.add("daoscus-comment-createdAt");
+        container.textContent= `${new Date(comment.createdAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" })}`;
+        commentContainer.appendChild(createdAt);
         const like = document.createElement("button");
         like.classList.add("daoscus-comment-like");
         like.textContent = `顶(${comment.likeCount})`;
