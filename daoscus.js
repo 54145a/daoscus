@@ -38,7 +38,7 @@ class Daoscus {
      * @param {string} content 
      */
     async postComment(authorization, content) {
-        const result = await fetch("https://code-api-pc.dao3.fun", {
+        const result = await fetch("https://code-api-pc.dao3.fun/comment", {
             method: "POST",
             headers: {
                 "Cache-Control": "no-cache,no-store,must-revalidate",
@@ -46,7 +46,7 @@ class Daoscus {
             },
             body: {
                 comment: content,
-                "contentId": this.mapId,
+                contentId: this.mapId,
                 contentType: 1
             }
 
