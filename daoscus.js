@@ -50,18 +50,18 @@ class Daoscus {
         createdAt.textContent = `${new Date(comment.createdAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" })}`;
         commentContainer.appendChild(createdAt);
         commentContainer.appendChild(document.createElement("br"));
-        const like = document.createElement("button");
+        /*const like = document.createElement("button");
         like.classList.add("daoscus-comment-like");
         like.textContent = `顶(${comment.likeCount})`;
-        commentContainer.appendChild(like);
+        commentContainer.appendChild(like);*/
         if (!comment.replyTo) {
-            const showReply = document.createElement("button");
-            showReply.classList.add("daoscus-comment-show-reply");
-            showReply.textContent = `查看回复(${comment.replyCount})`;
-            commentContainer.append(showReply);
             const replyContainer = document.createElement("div");
             replyContainer.classList.add("daoscus-comment-reply-container");
             commentContainer.appendChild(replyContainer);
+            const showReply = document.createElement("button");
+            showReply.classList.add("daoscus-comment-show-reply");
+            showReply.textContent = `展开${comment.replyCount}条回复`;
+            commentContainer.append(showReply);
         }
         container.appendChild(commentContainer);
         return commentContainer;
@@ -83,6 +83,10 @@ class Daoscus {
         for (const comment of rows) {
             const commentContainer = this.initComment(comment, container);
             container.appendChild(document.createElement("hr"));
+            const replyPreviewContainer = commentContainer.getElementsByClassName("daoscus-comment-reply-container").item(0);
+            for (const reply of comment.replyList) {
+                this.initComment(reply, replyPreviewContainer);
+            }
         }
     }
 }
