@@ -1,3 +1,4 @@
+//@ts-nocheck
 "use strict";
 class Daoscus {
     /**
@@ -102,6 +103,7 @@ class Daoscus {
      * @param {HTMLDivElement} container 
      */
     async init(container) {
+        const mapId = this.mapId;
         container.classList.add("daoscus-container");
         container.innerHTML = "";
         container.style.wordBreak = "break-all";
@@ -109,8 +111,15 @@ class Daoscus {
         const rows = await this.getCommentRows();
         const commentNum = document.createElement("p");
         commentNum.classList.add("daoscus-commentNum");
-        commentNum.textContent = `${rows.length} 评论 - Daoscus ${this.mapId}`;
+        commentNum.textContent = `${rows.length} 评论 - Daoscus ${mapId}`;
         container.appendChild(commentNum);
+        const createComment = document.createElement("button");
+        createComment.classList.add("daoscus-create-comment");
+        createComment.textContent = "发评论/回复评论";
+        createComment.onclick = function(){
+            open(`//dao3.fun/exp/experience/detail/${mapId}`);
+        };
+        container.appendChild(createComment);
         for (const comment of rows) {
             container.appendChild(document.createElement("hr"));
             const commentContainer = this.initComment(comment, container);
